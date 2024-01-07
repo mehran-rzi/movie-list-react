@@ -5,6 +5,10 @@ class Movies
     state = { 
         movies: getMovies()
      } 
+     handleDelete = (movie) =>{
+        const movies = this.state.movies.filter(m=> m._id !== movie._id);
+        this.setState({movies: movies})
+     }
     
     render() { 
         return <table className="table">
@@ -14,6 +18,7 @@ class Movies
                     <th>Genre</th>
                     <th>Stock</th>
                     <th>Rate</th>
+                    <th></th>
                 </tr>
             </thead>
         <tbody>
@@ -22,6 +27,7 @@ class Movies
                 <td>{movie.genre.name}</td>
                 <td>{movie.numberInStock}</td>
                 <td>{movie.dailyRentalRate}</td>
+                <td><buttom onClick={() =>this.handleDelete(movie)} className="btn btn-danger btn-sm">Delete</buttom></td>
                 
             </tr>)}
             
