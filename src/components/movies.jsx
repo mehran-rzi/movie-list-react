@@ -11,7 +11,15 @@ class Movies
      }
     
     render() { 
-        return <table className="table">
+        const {length: count} = this.state.movies;
+
+        if (count === 0)
+            return <p>there are no movies in the database</p>
+
+        return (
+            <React.Fragment>
+                <p>Showing {count} movies in the table.</p>
+        <table className="table">
             <thead>
                 <tr>
                     <th>Title</th>
@@ -33,6 +41,9 @@ class Movies
             
         </tbody>
         </table>
+            </React.Fragment>
+            
+        )
     }
 }
  
